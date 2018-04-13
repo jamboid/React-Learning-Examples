@@ -3,7 +3,7 @@ import Card from './Card';
 
 function CardList (props) {
   return (
-    <div class="cp_CardList">
+    <div className={'cp_CardList'}>
       {props.contacts.map(c => <Card key={c.id} name={c.name} />)}
     </div>
   );

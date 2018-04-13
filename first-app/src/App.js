@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import alphaSort from './modules/Sort';
 import './App.css';
 
 // Components
@@ -15,7 +16,7 @@ const contacts = [
 const newContacts = [
   { id: 5, name: "Jonny Appleseed" },
   { id: 6, name: "Irvine Mennie" },
-  { id: 7, name: 10 },
+  { id: 7, name: "Jamie Boyd" },
   { id: 8, name: "Ada Bean" }
 ];
 
@@ -32,8 +33,11 @@ class App extends Component {
   // Test function that updates state by merging new contacts with the existing array
   updateContacts(e) {
     this.setState((prevState) => {
+      let updatedList = prevState.contacts.concat(newContacts);
+      let sortedList = alphaSort(updatedList);
+
       return {
-        contacts: prevState.contacts.concat(newContacts)
+        contacts: sortedList
       };
     });
 
