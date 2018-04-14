@@ -16,8 +16,8 @@ class Card extends Component {
   }
 }
 
-Card.propTypes = {
-  name: PropTypes.string.isRequired
-};
+// Card.propTypes = {
+//   name: PropTypes.string.isRequired
+// };
 
 export default Card;
