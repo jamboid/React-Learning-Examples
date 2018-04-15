@@ -54,12 +54,21 @@ function getDataForLeg(leg, places, carriers) {
   legJSON.overallToName = toLocation.Name;
   legJSON.overallToNameAbbr = toLocation.Code;
   legJSON.arrival = leg.Arrival;
+  // Overall duration
+  legJSON.duration = leg.Duration;
   // Number of segments in leg
+  // TODO: include full leg information
   legJSON.steps = leg.SegmentIds.length;
   // Carriers info
-  const carrier = findElementInArrayByProperty(carriers, 'Id', leg.Carriers[0]);
-  legJSON.carrierName = carrier.Name;
-  legJSON.carrierCode = carrier.DisplayCode;
+  // All carriers are included so we can show multiple logos next to overall leg journey details if required
+  legJSON.carriers = [];
+  for (var i = 0; i < leg.Carriers.length; i++) {
+    const carrierData = {};
+    const carrier = findElementInArrayByProperty(carriers, 'Id', leg.Carriers[i]);
+    carrierData.name = carrier.Name;
+    carrierData.code = carrier.DisplayCode;
+    legJSON.carriers.push(carrierData);
+  }
 
   return legJSON;
 }
