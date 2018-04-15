@@ -1,6 +1,7 @@
 require('isomorphic-fetch');
 require('es6-promise').polyfill();
 const config = require('./config');
+const processor = require('./processor');
 
 const express = require('express');
 const app = express();
@@ -14,21 +15,10 @@ app.use(function(req, res, next) {
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
-
 });
-
-app.transformJSON(function(rawJSON) {
-  let processJSON;
-
-
-
-  return processJSON;
-})
 
 /**
   Simple flight search api wrapper.
-
-  TODO: client should provide params
 
   Api params and location values are here:
   http://business.skyscanner.net/portal/en-GB/Documentation/FlightsLivePricingQuickStart
@@ -38,20 +28,18 @@ app.get('/api/search', (req, res) => {
     "apiKey": config.apiKey,
     "adults": req.query.adults,
     "class": req.query.cabinclass,
-    "country": 'UK',
-    "currency": 'GBP',
+    "country": req.query.country,
+    "currency": req.query.currency,
     "toPlace": req.query.destinationplace,
     "toDate": req.query.inbounddate,
-    "locale": 'en-GB',
-    "locationschema": 'Sky',
+    "locale": req.query.locale,
+    "locationschema": req.query.locationschema,
     "fromPlace": req.query.originplace,
     "fromDate": req.query.outbounddate
   })
   .then((results) => {
-    // TODO - a better format for displaying results to the client
-    console.log('TODO: transform results for consumption by client');
-    console.log('here!')
-    res.json(results);
+    // Results are processed through processor module before being sent as stringified JSON data
+    res.json(processor.processLivePriceResultsForClient(results));
   })
   .catch(console.error);
 });

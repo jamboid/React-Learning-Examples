@@ -157,8 +157,6 @@ function pollError (state, err) {
 }
 
 const sessionParams = (query) => {
-  console.log(query.class);
-
   return querystring.stringify({
     apiKey: config.apiKey,
     adults: query.adults,
