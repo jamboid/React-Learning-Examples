@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import alphaSort from './modules/Sort';
+import {alphabeticalSort} from './modules/Sort';
 import './App.css';
 
 // Components
@@ -14,8 +14,8 @@ const contacts = [
 ];
 
 const newContacts = [
-  { id: 5, name: "Jonny Appleseed" },
-  { id: 6, name: "Irvine Mennie" },
+  { id: 5, name: "jonny Appleseed" },
+  { id: 6, name: "irvine Mennie" },
   { id: 7, name: "Jamie Boyd" },
   { id: 8, name: "Ada Bean" }
 ];
@@ -34,7 +34,8 @@ class App extends Component {
   updateContacts(e) {
     this.setState((prevState) => {
       let updatedList = prevState.contacts.concat(newContacts);
-      let sortedList = alphaSort(updatedList);
+      console.log(updatedList);
+      let sortedList = alphabeticalSort(updatedList);
 
       return {
         contacts: sortedList
