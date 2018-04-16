@@ -1,0 +1,31 @@
+@import "~bpk-mixins";
+@import "../../assets/sass/base/all";
+
+.resultsGrid {
+  display:flex;
+}
+
+@supports (display:flex) {
+  .resultsGrid {
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    grid-template-areas:
+    "hd hd hd hd"
+    "tb tb tb tb"
+    "rs rs rs rs";
+
+
+    &__header {
+      grid-area:hd;
+    }
+
+    &__toolbar {
+      grid-area:tb;
+    }
+
+    &__resultsList {
+      grid-area:rs;
+    }
+  }
+}

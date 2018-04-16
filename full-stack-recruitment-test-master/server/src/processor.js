@@ -100,8 +100,8 @@ function processLivePriceResultsForClient(livePriceJSON) {
     const rawItin = itins[i];
     const processedItin = {};
 
-    // Add Itinerary ID
-    processedItin.iD = rawItin.Id;
+    // Add Itinerary ID - created by concatenating the outbound and inbound Itinerary IDs
+    processedItin.iD = rawItin.OutboundLegId + '-' + rawItin.InboundLegId;
     // Pricing Options
     processedItin.booking = getDataForItineraryFooter(rawItin.PricingOptions[0], livePriceJSON.Agents);
     // Out-Bound Leg

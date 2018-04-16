@@ -1,5 +1,38 @@
 @import "~bpk-mixins";
+@import "../../assets/sass/base/all";
 
 .filterBar {
-  display: flex;
+  width: 100%;
+  background:$bpk-color-white;
+  padding:em(8);
+
+  &__actionsList {
+    width: 100%;
+    @include cleanList;
+    @include gridBase;
+  }
+
+  &__action {
+    font-size:em(16);
+    padding: 0;
+    margin-right:em(20,16);
+
+    &--last {
+      text-align: right;
+      margin-right: 0;
+      flex:1 0 auto;
+    }
+  }
+
+  &__actionLink {
+    padding:em(4,16);
+    text-decoration: none;
+    color:$bpk-color-blue-500;
+    display: inline-block;
+
+    &--priceAlert {
+      padding-left: 20px;
+      background:url(icon_price_alerts.svg) center left no-repeat;
+    }
+  }
 }

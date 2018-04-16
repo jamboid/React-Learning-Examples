@@ -3,7 +3,7 @@ import './TopNav.scss';
 import logo from '../..//logo.svg';
 
 const TopNav = () => (
-  <header className='header'>
+  <header className='header resultsGrid__header'>
     <a href="/">
       <span className='logoText'>Skyscanner</span>
       <img className='logo' alt="Skyscanner" src={logo}/>

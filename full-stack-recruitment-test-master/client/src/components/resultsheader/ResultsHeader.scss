@@ -1,0 +1,43 @@
+@import "~bpk-mixins";
+@import "../../assets/sass/base/all";
+
+.resHeader {
+  font-family:$bodyfontfamily;
+  background:$bpk-color-blue-500;
+  color:$clrWhite;
+  padding:em(13) em(10) em(13);
+
+  &__journey {
+    font-size:em(42);
+    line-height:1;
+    font-weight:$normal;
+    margin: 0;
+    @include gridBase;
+    align-items:center;
+
+  }
+
+  &__place {
+    text-decoration: none !important;
+  }
+
+  &__connector {
+    line-height: 0;
+    margin:0 em(8,42);
+  }
+
+  &__spinner {
+    display: inline-block;
+    line-height: 0;
+    width: 60px;
+    height: 60px;
+    @include bpk-spinner(spinner-white);
+    @include bpk-spinner--xl();
+  }
+
+  &__details {
+    font-size:em(16);
+    font-weight:$normal;
+    margin: 0 em(2,16);
+  }
+}
