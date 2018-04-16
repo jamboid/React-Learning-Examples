@@ -30,8 +30,8 @@ function getDataForResultsListHeader(query, places) {
 function getDataForItineraryFooter(priceOptions, agents) {
   const itinFooterJSON = {};
 
-  itinFooterJSON.price = priceOptions.Price || '';
-  itinFooterJSON.bookingLink = priceOptions.DeeplinkUrl || '';
+  itinFooterJSON.price = priceOptions.Price;
+  itinFooterJSON.bookingLink = priceOptions.DeeplinkUrl;
   // itinFooterJSON.agentID = priceOptions.Agents[0] || '';
   const agentInfo = findElementInArrayByProperty(agents, 'Id', priceOptions.Agents[0]);
   if(agentInfo) {
@@ -100,6 +100,8 @@ function processLivePriceResultsForClient(livePriceJSON) {
     const rawItin = itins[i];
     const processedItin = {};
 
+    // Add Itinerary ID
+    processedItin.iD = rawItin.Id;
     // Pricing Options
     processedItin.booking = getDataForItineraryFooter(rawItin.PricingOptions[0], livePriceJSON.Agents);
     // Out-Bound Leg
