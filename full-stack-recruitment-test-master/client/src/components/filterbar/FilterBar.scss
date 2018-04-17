@@ -9,7 +9,7 @@
   &__actionsList {
     width: 100%;
     @include cleanList;
-    @include gridBase;
+    @include flexBase;
   }
 
   &__action {

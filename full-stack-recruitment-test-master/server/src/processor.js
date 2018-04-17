@@ -91,7 +91,7 @@ function processLivePriceResultsForClient(livePriceJSON) {
   processedJSON.currencySymbol = queryCurrency.Symbol;
 
   // Add Itinerary Info
-  processedJSON.Itineraries = [];
+  processedJSON.itineraries = [];
 
   const itins = livePriceJSON.Itineraries;
 
@@ -101,7 +101,7 @@ function processLivePriceResultsForClient(livePriceJSON) {
     const processedItin = {};
 
     // Add Itinerary ID - created by concatenating the outbound and inbound Itinerary IDs
-    processedItin.iD = rawItin.OutboundLegId + '-' + rawItin.InboundLegId;
+    processedItin.id = rawItin.OutboundLegId + '-' + rawItin.InboundLegId;
     // Pricing Options
     processedItin.booking = getDataForItineraryFooter(rawItin.PricingOptions[0], livePriceJSON.Agents);
     // Out-Bound Leg
@@ -111,7 +111,7 @@ function processLivePriceResultsForClient(livePriceJSON) {
     const inboundLegData = findElementInArrayByProperty(livePriceJSON.Legs, 'Id' , rawItin.InboundLegId);
     processedItin.inboundLeg = getDataForLeg(inboundLegData, livePriceJSON.Places, livePriceJSON.Carriers);
 
-    processedJSON.Itineraries.push(processedItin);
+    processedJSON.itineraries.push(processedItin);
   }
 
   return processedJSON;

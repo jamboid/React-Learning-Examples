@@ -1,12 +1,25 @@
 @import "~bpk-mixins";
 @import "../../assets/sass/base/all";
 
-.resultsGrid {
-  display:flex;
+.searchResults {
+  @include flexBase;
+  flex-direction:column;
+
+  &__header {
+    order:1;
+  }
+
+  &__toolbar {
+    order:2;
+  }
+
+  &__resultsList {
+    order:3;
+  }
 }
 
 @supports (display:flex) {
-  .resultsGrid {
+  .searchResults {
     display:grid;
     grid-template-columns: repeat(4, 1fr);
 
@@ -14,7 +27,6 @@
     "hd hd hd hd"
     "tb tb tb tb"
     "rs rs rs rs";
-
 
     &__header {
       grid-area:hd;

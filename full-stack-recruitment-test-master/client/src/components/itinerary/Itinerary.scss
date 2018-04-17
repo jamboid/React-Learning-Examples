@@ -1,0 +1,101 @@
+@import "~bpk-mixins";
+@import "../../assets/sass/base/all";
+
+.itin {
+  font-family:$bodyfontfamily;
+
+  /* !== Leg */
+  &__leg {
+    @include flexBase;
+    margin:0 0 em(17);
+  }
+
+  &__legCarrier {
+    margin: 0;
+  }
+
+  &__legLogo {
+    width: 24px;
+    height: 24px;
+    border-radius:3px;
+  }
+
+  /* !== Location */
+  &__location {
+    padding:0 em(18);
+
+    &:first-of-type {
+      padding-left:em(12);
+    }
+  }
+
+  &__locTime,
+  &__locName {
+    line-height: 1.1;
+  }
+
+  &__locTime {
+    color:$bpk-color-gray-900;
+  }
+
+  &__locName {
+    color:$bpk-color-gray-500;
+
+    &[title] {
+      text-decoration: none;
+    }
+  }
+
+  &__connector {
+    align-self:center;
+  }
+
+  /* !== Durations */
+  &__duration {
+    flex:1 0 auto;
+    text-align: right;
+    align-self:center;
+  }
+
+  &__time,
+  &__stops {
+    font-size:em(12);
+    line-height: 1.1;
+  }
+
+  &__time {
+    color:$bpk-color-gray-500;
+    margin:0 0 em(8,12);
+  }
+
+  &__stops {
+    color:$bpk-color-green-500;
+  }
+
+  /* !== Footer Actions */
+  &__action {
+    width: 100%;
+    @include flexBase;
+    align-items:flex-end;
+  }
+
+  &__actionDetail {
+    flex:1 0 auto;
+  }
+
+  &__price {
+    font-size:em(28);
+    line-height: 1.1;
+    color:$bpk-color-gray-900;
+  }
+
+  &__agent {
+    font-size:em(16);
+    line-height: 1.2;
+    color:$bpk-color-gray-300;
+  }
+
+  &__button {
+    flex:0 0 auto;
+  }
+}

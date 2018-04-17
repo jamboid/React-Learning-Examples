@@ -3,18 +3,17 @@ import './App.scss';
 
 // Components
 import TopNav from './components/topnav';
-import ResultsGrid from './components/resultsgrid';
+import SearchResults from './components/searchresults';
 
 class App extends Component {
   render() {
     return (
       <div className='App'>
         <TopNav/>
-        <ResultsGrid/>
+        <SearchResults/>
       </div>
     );
   }
 }
 
-console.log('fetching results from server...');
 export default App;

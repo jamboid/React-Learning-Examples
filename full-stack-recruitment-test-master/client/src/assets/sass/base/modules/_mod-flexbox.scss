@@ -1,47 +1,47 @@
-/* != Framework Module - Grid */
-@mixin gridBase {
+/* != Framework Module - flex */
+@mixin flexBase {
   display:flex;
 }
 
-%gridBase {
-  @include gridBase;
+%flexBase {
+  @include flexBase;
 }
 
-// gridList - List of items that wrap onto multiple lines
-@mixin gridList {
+// flexList - List of items that wrap onto multiple lines
+@mixin flexList {
   flex-wrap:wrap;
   align-items:stretch;
 }
 
-%gridList {
-  @include gridList;
+%flexList {
+  @include flexList;
 }
 
-// gridRow - Row of items that don't wrap
-@mixin gridRow {
+// flexRow - Row of items that don't wrap
+@mixin flexRow {
   align-items:stretch;
 }
 
-// naturalGridRow - Row of items that don't wrap and also don't stretch vertically
-@mixin gridNaturalRow {
+// naturalflexRow - Row of items that don't wrap and also don't stretch vertically
+@mixin flexNaturalRow {
   align-items:flex-start;
 }
 
-@mixin gridNaturalAlignment {
+@mixin flexNaturalAlignment {
   align-items: flex-start;
 }
 
-// gridCol - Flexbox column of items
-@mixin gridCol {
+// flexCol - Flexbox column of items
+@mixin flexCol {
   flex-direction:column;
 }
 
-%gridCol {
-  @include gridCol;
+%flexCol {
+  @include flexCol;
 }
 
-// gridCentreContent - Flex item that centres content vertically and horizontally
-@mixin gridCentreContent {
+// flexCentreContent - Flex item that centres content vertically and horizontally
+@mixin flexCentreContent {
   justify-content:center;
   align-items:center;
   flex-direction: column;
