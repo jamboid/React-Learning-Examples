@@ -11,14 +11,14 @@ export function getQuery() {
   // Generate dates for next Monday and Tuesday as formatted strings
   let nextMonday, nextTuesday;
   // If today is Monday, do the search starting 1 week from today
-  if(moment().day() === 1) {
-    nextMonday = moment().add(1, 'weeks').day('Monday').format('YYYY-MM-DD');
-    nextTuesday = moment().add(1, 'weeks').day('Tuesday').format('YYYY-MM-DD');
+  if(moment().day() === 0) {
+    nextMonday = moment().day('Monday').format('YYYY-MM-DD');
+    nextTuesday = moment().day('Tuesday').format('YYYY-MM-DD');
   }
   // Otherwise use the next Monday in the calendar
   else {
-    nextMonday = moment().day('Monday').format('YYYY-MM-DD');
-    nextTuesday = moment().day('Tuesday').format('YYYY-MM-DD');
+    nextMonday = moment().add(1, 'weeks').day('Monday').format('YYYY-MM-DD');
+    nextTuesday = moment().add(1, 'weeks').day('Tuesday').format('YYYY-MM-DD');
   }
 
   const testQuery = `adults=2&cabinclass=economy&country=UK&currency=GBP&destinationplace=LOND-sky&inbounddate=${nextTuesday}&locale=en-GB&locationschema=Sky&originplace=EDI-sky&outbounddate=${nextMonday}`;
