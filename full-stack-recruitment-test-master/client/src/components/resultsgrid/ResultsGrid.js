@@ -11,6 +11,7 @@ class ResultsGrid extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
+      mode: 'loading',
       header: {
         originCode: '',
         originName: '',
@@ -33,7 +34,10 @@ class ResultsGrid extends React.Component {
       console.log(results);
 
       this.setState((prevState) => {
-        return {header:results.header};
+        return {
+          mode: 'loaded',
+          header:results.header
+        };
       });
     })
     .catch(console.error);
@@ -42,7 +46,7 @@ class ResultsGrid extends React.Component {
   render () {
     return (
       <section className='resultsGrid'>
-        <header className='resultsGrid__header'><ResultsHeader origCode={this.state.header.originCode} destCode={this.state.header.destinationCode} /></header>
+        <header className='resultsGrid__header'><ResultsHeader mode={this.state.mode} origCode={this.state.header.originCode} destCode={this.state.header.destinationCode} /></header>
         <main className='resultsGrid__resultsList'><FilterBar/></main>
         <aside className='resultsGrid__toolbar'><ResultsList /></aside>
       </section>

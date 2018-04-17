@@ -15,6 +15,7 @@ const ResultsHeader = (props) => (
       <abbr className='resHeader__place--dest resHeader__place' title="London">{props.destCode}</abbr>
     </h1>
     <h2 className='resHeader__details'>2 travellers, economy</h2>
+    <p>{props.mode}</p>
   </div>
 );
 
