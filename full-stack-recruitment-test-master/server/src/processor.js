@@ -1,9 +1,9 @@
 // TODO: Move this to a JSONUtils module on the Server
 
-function findElementInArrayByProperty(arr, propertyName, propertyValue) {
-  for (var i=0; i < arr.length; i++) {
-      if (arr[i][propertyName] === propertyValue) {
-      return arr[i];
+function findElementInArrayByProperty(array, propertyName, propertyValue) {
+  for (var i=0; i < array.length; i++) {
+      if (array[i][propertyName] === propertyValue) {
+      return array[i];
     }
   }
 }
@@ -57,7 +57,7 @@ function getDataForLeg(leg, places, carriers) {
   // Overall duration
   legJSON.duration = leg.Duration;
   // Number of segments in leg
-  // TODO: include full leg information
+  // TODO: include full leg segment information so these could displayed as optional details
   legJSON.steps = leg.SegmentIds.length;
   // Carriers info
   // All carriers are included so we can show multiple logos next to overall leg journey details if required
@@ -74,14 +74,9 @@ function getDataForLeg(leg, places, carriers) {
 }
 
 function processLivePriceResultsForClient(livePriceJSON) {
-
-  // TODO: Move this functionality to the server
-  // Developed here using sample API JSON for the sake of convenience.
-
-  // JSON Object we're going to return to the client
   const processedJSON = {};
 
-  processedJSON.name = 'Results';
+  processedJSON.name = 'Live Price Search Results';
 
   // Add info used to generate results list header component
   processedJSON.header = getDataForResultsListHeader(livePriceJSON.Query, livePriceJSON.Places);

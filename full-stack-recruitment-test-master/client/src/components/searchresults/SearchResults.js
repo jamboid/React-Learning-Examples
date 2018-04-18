@@ -16,12 +16,7 @@ class SearchResults extends React.Component {
     super(props);
     this.state = {
       mode: 'loading',
-      header: {
-        originCode: '',
-        originName: '',
-        destinationCode: '',
-        destinationName: ''
-      },
+      header: null,
       itineraries: null
     };
   }
@@ -52,7 +47,7 @@ class SearchResults extends React.Component {
   render () {
     return (
       <section className='searchResults'>
-        <header className='searchResults__header'><ResultsHeader mode={this.state.mode} origCode={this.state.header.originCode} destCode={this.state.header.destinationCode} /></header>
+        <header className='searchResults__header'><ResultsHeader mode={this.state.mode} content={this.state.header} /></header>
         <main className='searchResults__resultsList'>
           <ResultsList mode={this.state.mode} itineraries={this.state.itineraries} />
         </main>

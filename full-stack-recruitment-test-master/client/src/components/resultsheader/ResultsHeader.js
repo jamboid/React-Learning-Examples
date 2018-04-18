@@ -17,15 +17,15 @@ class ResultsHeader extends React.Component {
         <h2 className='resHeader__details'>&nbsp;</h2>
       </div>
     )
-  } else if (this.props.mode === 'loaded') {
+  } else if (this.props.mode === 'loaded' && this.props.content !== null) {
       return (
         <div className='resHeader'>
           <h1 className='resHeader__journey'>
-            <abbr className='resHeader__place--orig resHeader__place' title='Edinburgh'>{this.props.origCode}</abbr>
+            <abbr className='resHeader__place--orig resHeader__place' title='Edinburgh'>{this.props.content.originCode}</abbr>
             <span className='resHeader__connector'>
               <img src={arrow} alt='to' />
             </span>
-            <abbr className='resHeader__place--dest resHeader__place' title="London">{this.props.destCode}</abbr>
+            <abbr className='resHeader__place--dest resHeader__place' title="London">{this.props.content.destinationCode}</abbr>
           </h1>
           <h2 className='resHeader__details'>2 travellers, economy</h2>
         </div>
@@ -33,10 +33,10 @@ class ResultsHeader extends React.Component {
     }
   }
 }
-
-ResultsHeader.defaultProps = {
-  origCode: "",
-  destCode: ""
-};
+//
+// ResultsHeader.defaultProps = {
+//   origCode: "",
+//   destCode: ""
+// };
 
 export default ResultsHeader;

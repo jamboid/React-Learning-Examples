@@ -1,6 +1,5 @@
 import React from 'react';
 import BpkCard from 'bpk-component-card';
-import BpkButton from 'bpk-component-button';
 import arrow from '../itinerary/arrow_right_grey_small.svg';
 
 import './Itinerary.scss';
@@ -8,7 +7,7 @@ import './Itinerary.scss';
 class Itinerary extends React.Component {
   render(){
     return (
-      <BpkCard className='itinerary' href={this.props.content.booking.bookingLink}>
+      <BpkCard className='itinerary'>
         <section className='itin__leg'>
           <figure className='itin__legCarrier'><img className="itin__legLogo" src="https://logos.skyscnr.com/images/airlines/favicon/EZ.png" alt="Easyjet" /></figure>
           <div className='itin__location'>
@@ -50,7 +49,7 @@ class Itinerary extends React.Component {
             <div className='itin__price'>&pound;{this.props.content.booking.price}</div>
             <div className='itin__agent'>{this.props.content.booking.agentName}</div>
           </div>
-          <BpkButton className={'itin__button'}>Select</BpkButton>
+          <a className={'itin__button'} href={this.props.content.booking.bookingLink} rel="nofollow">Select</a>
         </footer>
       </BpkCard>
     )

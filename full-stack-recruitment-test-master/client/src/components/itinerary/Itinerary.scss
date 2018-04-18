@@ -96,6 +96,7 @@
   }
 
   &__button {
+    @include bpk-button;
     flex:0 0 auto;
   }
 }
