@@ -44,6 +44,8 @@ function getDataForItineraryFooter(priceOptions, agents) {
 function getDataForLeg(leg, places, carriers) {
   const legJSON = {};
 
+  // ID
+  legJSON.id = leg.Id;
   // Overall origin location info and departure time
   const fromLocation = findElementInArrayByProperty(places, 'Id', leg.OriginStation);
   legJSON.overallFromName = fromLocation.Name;
@@ -99,12 +101,22 @@ function processLivePriceResultsForClient(livePriceJSON) {
     processedItin.id = rawItin.OutboundLegId + '-' + rawItin.InboundLegId;
     // Pricing Options
     processedItin.booking = getDataForItineraryFooter(rawItin.PricingOptions[0], livePriceJSON.Agents);
+
+    processedItin.legs = [];
+
     // Out-Bound Leg
-    const outboundLegData = findElementInArrayByProperty(livePriceJSON.Legs, 'Id' , rawItin.OutboundLegId);
-    processedItin.outboundLeg = getDataForLeg(outboundLegData, livePriceJSON.Places, livePriceJSON.Carriers);
+    if(rawItin.OutboundLegId) {
+      const outboundLegData = findElementInArrayByProperty(livePriceJSON.Legs, 'Id' , rawItin.OutboundLegId);
+      const outboundLeg = getDataForLeg(outboundLegData, livePriceJSON.Places, livePriceJSON.Carriers);
+      processedItin.legs.push(outboundLeg);
+    }
+
     // In-Bound Leg
-    const inboundLegData = findElementInArrayByProperty(livePriceJSON.Legs, 'Id' , rawItin.InboundLegId);
-    processedItin.inboundLeg = getDataForLeg(inboundLegData, livePriceJSON.Places, livePriceJSON.Carriers);
+    if(rawItin.InboundLegId) {
+      const inboundLegData = findElementInArrayByProperty(livePriceJSON.Legs, 'Id' , rawItin.InboundLegId);
+      const inboundLeg = getDataForLeg(inboundLegData, livePriceJSON.Places, livePriceJSON.Carriers);
+      processedItin.legs.push(inboundLeg);
+  }
 
     processedJSON.itineraries.push(processedItin);
   }

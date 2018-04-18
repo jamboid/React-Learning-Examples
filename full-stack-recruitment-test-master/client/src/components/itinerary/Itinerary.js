@@ -1,14 +1,18 @@
 import React from 'react';
 import BpkCard from 'bpk-component-card';
-import arrow from '../itinerary/arrow_right_grey_small.svg';
+import Leg from '../leg';
 
 import './Itinerary.scss';
 
 class Itinerary extends React.Component {
   render(){
     return (
-      <BpkCard className='itinerary'>
-        <section className='itin__leg'>
+      <div className='itin'>
+        {this.props.content.legs.map((leg) =>
+          <Leg key={leg.id} content={leg}/>
+        )}
+
+        {/* <section className='itin__leg'>
           <figure className='itin__legCarrier'><img className="itin__legLogo" src="https://logos.skyscnr.com/images/airlines/favicon/EZ.png" alt="Easyjet" /></figure>
           <div className='itin__location'>
             <div className='itin__locTime'>07:00</div>
@@ -26,6 +30,7 @@ class Itinerary extends React.Component {
             <div className='itin__stops'>Direct</div>
           </div>
         </section>
+
         <section className='itin__leg'>
           <figure className='itin__legCarrier'><img className="itin__legLogo" src="https://logos.skyscnr.com/images/airlines/favicon/EZ.png" alt="Easyjet" /></figure>
           <div className='itin__location'>
@@ -43,7 +48,8 @@ class Itinerary extends React.Component {
             <div className='itin__time'>1h 30</div>
             <div className='itin__stops'>Direct</div>
           </div>
-        </section>
+        </section> */}
+
         <footer className='itin__action'>
           <div className='itin__actionDetail'>
             <div className='itin__price'>&pound;{this.props.content.booking.price}</div>
@@ -51,7 +57,7 @@ class Itinerary extends React.Component {
           </div>
           <a className={'itin__button'} href={this.props.content.booking.bookingLink} rel="nofollow">Select</a>
         </footer>
-      </BpkCard>
+      </div>
     )
   }
 }

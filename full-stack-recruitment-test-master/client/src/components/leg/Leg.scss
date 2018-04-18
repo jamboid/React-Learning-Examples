@@ -3,8 +3,6 @@
 
 .itin {
   font-family:$bodyfontfamily;
-  @include bpk-card;
-  @include bpk-card--padded;
 
   /* !== Leg */
   &__leg {
