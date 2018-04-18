@@ -5,6 +5,7 @@
   font-family:$bodyfontfamily;
   @include bpk-card;
   @include bpk-card--padded;
+  cursor: default;
 
   /* !== Leg */
   &__leg {

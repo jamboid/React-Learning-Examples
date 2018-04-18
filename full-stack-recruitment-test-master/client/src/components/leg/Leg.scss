@@ -1,20 +1,21 @@
 @import "~bpk-mixins";
 @import "../../assets/sass/base/all";
 
-.itin {
+
+
+
+/* !== Leg */
+.leg {
   font-family:$bodyfontfamily;
+  @include flexBase;
+  margin:0 0 em(17);
 
-  /* !== Leg */
-  &__leg {
-    @include flexBase;
-    margin:0 0 em(17);
-  }
 
-  &__legCarrier {
+  &__carrier {
     margin: 0;
   }
 
-  &__legLogo {
+  &__logo {
     width: 24px;
     height: 24px;
     border-radius:3px;
@@ -70,33 +71,5 @@
 
   &__stops {
     color:$bpk-color-green-500;
-  }
-
-  /* !== Footer Actions */
-  &__action {
-    width: 100%;
-    @include flexBase;
-    align-items:flex-end;
-  }
-
-  &__actionDetail {
-    flex:1 0 auto;
-  }
-
-  &__price {
-    font-size:em(28);
-    line-height: 1.1;
-    color:$bpk-color-gray-900;
-  }
-
-  &__agent {
-    font-size:em(16);
-    line-height: 1.2;
-    color:$bpk-color-gray-300;
-  }
-
-  &__button {
-    @include bpk-button;
-    flex:0 0 auto;
   }
 }

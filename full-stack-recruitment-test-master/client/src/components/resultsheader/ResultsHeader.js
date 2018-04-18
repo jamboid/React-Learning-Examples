@@ -1,9 +1,6 @@
 import React from 'react';
 import './ResultsHeader.scss';
-import arrow from'./arrow_right_white_large.svg';
-
-// TODO: Have loading and loaded states that changes the content of the header
-// Add <span className='resHeader__spinner'></span>
+import Arrow from'./arrow_right_white_large.svg';
 
 class ResultsHeader extends React.Component {
   render () {
@@ -21,11 +18,11 @@ class ResultsHeader extends React.Component {
       return (
         <div className='resHeader'>
           <h1 className='resHeader__journey'>
-            <abbr className='resHeader__place--orig resHeader__place' title='Edinburgh'>{this.props.content.originCode}</abbr>
+            <abbr className='resHeader__place--orig resHeader__place' title={this.props.content.originName}>{this.props.content.originCode}</abbr>
             <span className='resHeader__connector'>
-              <img src={arrow} alt='to' />
+              <img src={Arrow} alt='to' />
             </span>
-            <abbr className='resHeader__place--dest resHeader__place' title="London">{this.props.content.destinationCode}</abbr>
+            <abbr className='resHeader__place--dest resHeader__place' title={this.props.content.destinationName}>{this.props.content.destinationCode}</abbr>
           </h1>
           <h2 className='resHeader__details'>2 travellers, economy</h2>
         </div>
@@ -33,10 +30,5 @@ class ResultsHeader extends React.Component {
     }
   }
 }
-//
-// ResultsHeader.defaultProps = {
-//   origCode: "",
-//   destCode: ""
-// };
 
 export default ResultsHeader;

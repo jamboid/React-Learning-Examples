@@ -46,21 +46,26 @@ function getDataForLeg(leg, places, carriers) {
 
   // ID
   legJSON.id = leg.Id;
+
   // Overall origin location info and departure time
   const fromLocation = findElementInArrayByProperty(places, 'Id', leg.OriginStation);
   legJSON.overallFromName = fromLocation.Name;
   legJSON.overallFromNameAbbr = fromLocation.Code;
   legJSON.departure = leg.Departure;
+
   // Overall destination location info and departure time
   const toLocation = findElementInArrayByProperty(places, 'Id', leg.DestinationStation);
   legJSON.overallToName = toLocation.Name;
   legJSON.overallToNameAbbr = toLocation.Code;
   legJSON.arrival = leg.Arrival;
+
   // Overall duration
   legJSON.duration = leg.Duration;
+
   // Number of segments in leg
   // TODO: include full leg segment information so these could displayed as optional details
   legJSON.steps = leg.SegmentIds.length;
+
   // Carriers info
   // All carriers are included so we can show multiple logos next to overall leg journey details if required
   legJSON.carriers = [];
