@@ -6,6 +6,12 @@ import './Leg.scss';
 
 class Leg extends React.Component {
   createCarrierIconURL(code) {
+    // Easyjet returns a 3-letter code, which doesn't work with the supplied icon CDN iconURL
+    // so I'm reducing the code to the first 2 letters to fix this edge case.
+    if(code.length > 2) {
+      code = code.substring(0,2);
+    }
+
     const iconURL = 'https://logos.skyscnr.com/images/airlines/favicon/' + code +'.png';
     return iconURL;
   }
