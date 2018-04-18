@@ -22,7 +22,7 @@ class ResultsList extends React.Component {
       } else {
         return (
           <div className='resultsList'>
-            <p>Gathering results...</p>
+            <p>Sorry, we didn't find any results for that search.</p>
           </div>
         )
       }

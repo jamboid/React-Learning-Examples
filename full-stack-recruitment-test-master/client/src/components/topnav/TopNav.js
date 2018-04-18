@@ -1,6 +1,6 @@
 import React from 'react';
 import './TopNav.scss';
-import logo from '../..//logo.svg';
+import logo from './skyscanner_logo.svg';
 
 const TopNav = () => (
   <header className='header resultsGrid__header'>
