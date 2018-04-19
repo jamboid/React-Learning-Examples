@@ -17,8 +17,18 @@ class Leg extends React.Component {
   }
 
   getFormattedTime(time) {
-    const formattedTime = moment(time).format('HH:MM');
+    const formattedTime = moment(time).format('hh:mm');
     return formattedTime;
+  }
+
+  getFormattedSteps(steps) {
+    if(steps === 1) {
+      return "Direct";
+    } else if( steps === 2) {
+      return "1 Stop";
+    } else {
+      return (steps - 1) + ' Stops';
+    }
   }
 
   getFormattedDuration(durationInMinutes) {
@@ -57,7 +67,7 @@ class Leg extends React.Component {
         </div>
         <div className='leg__duration'>
           <div className='leg__time'>{this.getFormattedDuration(this.props.content.duration)}</div>
-          <div className='leg__stops'>Direct</div>
+          <div className='leg__stops'>{this.getFormattedSteps(this.props.content.steps)}</div>
         </div>
       </section>
     )

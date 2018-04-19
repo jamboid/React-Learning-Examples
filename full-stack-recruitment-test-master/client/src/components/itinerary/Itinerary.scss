@@ -83,6 +83,7 @@
   }
 
   &__actionDetail {
+    font-family: $bpk-font-family-base;
     flex:1 0 auto;
   }
 
@@ -99,7 +100,7 @@
   }
 
   &__button {
-    @include bpk-button;
+    @include bpk-button; 
     flex:0 0 auto;
   }
 }

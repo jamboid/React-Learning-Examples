@@ -23,8 +23,4 @@ class Itinerary extends React.Component {
   }
 }
 
-// ResultsList.propTypes = {
-//   itineraries: React.PropTypes.array.isRequired
-// };
-
 export default Itinerary;
