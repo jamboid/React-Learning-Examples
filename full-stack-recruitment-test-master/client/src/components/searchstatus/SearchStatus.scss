@@ -18,7 +18,9 @@
 
   &__message {
     font-size:em(20);
+    font-weight:$normal;
     margin: 0;
+    text-align: center;
     color:$bpk-color-white;
   }
 }

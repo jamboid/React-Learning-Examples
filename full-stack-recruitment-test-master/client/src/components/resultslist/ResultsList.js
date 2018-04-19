@@ -8,7 +8,7 @@ class ResultsList extends React.Component {
     if(this.props.mode === 'loading') {
       return (
         <div className='resultsList'>
-          <SearchStatus status="loading" message={'Gathering results...'} />
+          <SearchStatus status="loading" message={'Gathering results'} />
         </div>
       )
     } else if (this.props.mode === 'loaded') {
