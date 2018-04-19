@@ -27,10 +27,15 @@ function getDataForResultsListHeader(query, places) {
   return headerJSON;
 }
 
-function getDataForItineraryFooter(priceOptions, agents) {
+function getDataForItineraryFooter(currency, priceOptions, agents) {
   const itinFooterJSON = {};
+  
+  if(currency.SymbolOnLeft) {
+    itinFooterJSON.price = currency.Symbol + priceOptions.Price;
+  }  else {
+    itinFooterJSON.price = priceOptions.Price + currency.Symbol;
+  }
 
-  itinFooterJSON.price = priceOptions.Price;
   itinFooterJSON.bookingLink = priceOptions.DeeplinkUrl;
   // itinFooterJSON.agentID = priceOptions.Agents[0] || '';
   const agentInfo = findElementInArrayByProperty(agents, 'Id', priceOptions.Agents[0]);
@@ -88,14 +93,11 @@ function processLivePriceResultsForClient(livePriceJSON) {
   // Add info used to generate results list header component
   processedJSON.header = getDataForResultsListHeader(livePriceJSON.Query, livePriceJSON.Places);
 
-  // Add Global data
-  const queryCurrency = findElementInArrayByProperty(livePriceJSON.Currencies, 'Code', livePriceJSON.Query.Currency);
-  processedJSON.currencySymbol = queryCurrency.Symbol;
-
   // Add Itinerary Info
   processedJSON.itineraries = [];
 
   const itins = livePriceJSON.Itineraries;
+  const currencySymbol = findElementInArrayByProperty(livePriceJSON.Currencies, 'Code', livePriceJSON.Query.Currency);
 
   // ITINERARIES
   for (var i = 0; i < itins.length; i++) {
@@ -105,7 +107,7 @@ function processLivePriceResultsForClient(livePriceJSON) {
     // Add Itinerary ID - created by concatenating the outbound and inbound Itinerary IDs
     processedItin.id = rawItin.OutboundLegId + '-' + rawItin.InboundLegId;
     // Pricing Options
-    processedItin.booking = getDataForItineraryFooter(rawItin.PricingOptions[0], livePriceJSON.Agents);
+    processedItin.booking = getDataForItineraryFooter(currencySymbol, rawItin.PricingOptions[0], livePriceJSON.Agents);
 
     processedItin.legs = [];
 

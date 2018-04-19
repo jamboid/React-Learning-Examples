@@ -4,9 +4,9 @@ import moment from 'moment';
 export function getQuery() {
 
   // This test app is using an artificially constructed query, but still
-  // needs to run correctly at an indetermindate future date, so the outbound
+  // needs to run correctly at an indeterminate future date, so the outbound
   // and inbound dates of "next Monday and Tuesday" are generated dynamically
-  // based on the current day is.
+  // based on what the current day is.
 
   // Generate dates for next Monday and Tuesday as formatted strings
   let nextMonday, nextTuesday;

@@ -1,15 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.scss';
 
 // Components
 import TopNav from './components/topnav';
 import SearchResults from './components/searchresults';
 
-class App extends Component {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      navOpen: false
+    };
+    this.updateNavState = this.updateNavState.bind(this);
+  }
+
+  updateNavState() {
+    this.setState(prevState => ({
+      navOpen: !prevState.navOpen
+    }));
+  }
+
   render() {
     return (
-      <div className='App'>
-        <TopNav/>
+      <div className="App">
+        <TopNav navState={this.state.navOpen} toggleNav={this.updateNavState}/>
         <SearchResults/>
       </div>
     );

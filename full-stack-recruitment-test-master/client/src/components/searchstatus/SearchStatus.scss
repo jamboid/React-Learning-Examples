@@ -1,0 +1,24 @@
+@import "~bpk-mixins";
+@import "../../assets/sass/base/all";
+
+.searchStatus {
+  font-family:$bodyfontfamily;
+  @include bpk-card;
+  @include bpk-card--padded;
+  cursor: default;
+
+
+  &--loading {
+    background:$bpk-color-green-500;
+  }
+
+  &--noResults {
+    background:$bpk-color-red-500;
+  }
+
+  &__message {
+    font-size:em(20);
+    margin: 0;
+    color:$bpk-color-white;
+  }
+}

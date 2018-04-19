@@ -1,19 +1,87 @@
 @import "~bpk-mixins";
 
-.header {
+.pageHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: $bpk-spacing-sm $bpk-spacing-sm;
-
   background-color: $bpk-color-white;
   box-shadow: 0 0 10px 0 $bpk-color-gray-300;
+
+  &__brand {
+    line-height:0;
+    margin: 0;
+  }
+
+  &__brandLink {
+    display: block;
+  }
+
+  &__logo {
+    vertical-align: middle;
+  }
 }
 
-.logo {
-  vertical-align: middle;
-}
+.navMenu {
+  $self: &;
 
-.logoText {
-  @include bpk-visually-hidden;
+  &__toggle {
+    display: block;
+    width: 40px;
+    height: 20px;
+    position: relative;
+  }
+
+  &__toggleLabel {
+    display: block;
+    text-indent: -9999px;
+    width: 18px;
+    height: 2px;
+    background:$bpk-color-blue-500;
+    position: absolute;
+    right:0;
+    top:calc(50% - 1px);
+    border-radius:2px;
+    transition:all 0.15s ease-in-out;
+
+    &:before,
+    &:after {
+      content:"";
+      display: block;
+      width: 18px;
+      height: 2px;
+      background:$bpk-color-blue-500;
+      position: absolute;
+      left:calc(50% - 9px);
+      border-radius:2px;
+      transition:all 0.15s ease-in-out;
+    }
+
+    &:before {
+      top:-5px;
+    }
+
+    &:after {
+      top:5px;
+    }
+  }
+  
+  &--open {
+    #{ $self }__toggleLabel {
+      background:transparent;
+
+      &:before,
+      &:after {
+        top:0;
+      }
+
+      &:before {
+        transform:rotate(45deg);
+      }
+
+      &:after {
+        transform:rotate(-45deg);
+      }
+    }
+  }
 }
