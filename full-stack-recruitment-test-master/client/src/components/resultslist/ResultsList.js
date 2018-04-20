@@ -1,4 +1,5 @@
 import React from 'react';
+import BpkPagination from 'bpk-component-paginaton';
 import Itinerary from '../itinerary';
 import './ResultsList.scss';
 
