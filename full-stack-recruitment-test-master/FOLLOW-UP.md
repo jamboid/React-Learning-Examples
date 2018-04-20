@@ -4,7 +4,7 @@
 
 ### Q) What is the command to start the server?
 
-(Default) `APIKEY=ss630745725358065467897349852985 npm run server`
+`APIKEY=ss630745725358065467897349852985 npm run server`
 
 ---
 

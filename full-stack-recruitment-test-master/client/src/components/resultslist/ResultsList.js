@@ -1,6 +1,7 @@
 import React from 'react';
 import BpkPagination from 'bpk-component-paginaton';
 import Itinerary from '../itinerary';
+import SearchStatus from '../searchstatus';
 import './ResultsList.scss';
 
 class ResultsList extends React.Component {
@@ -8,7 +9,7 @@ class ResultsList extends React.Component {
     if(this.props.mode === 'loading') {
       return (
         <div className='resultsList'>
-          <p>Gathering results...</p>
+          <SearchStatus status="loading" message={'Gathering results'} />
         </div>
       )
     } else if (this.props.mode === 'loaded') {
@@ -23,7 +24,7 @@ class ResultsList extends React.Component {
       } else {
         return (
           <div className='resultsList'>
-            <p>Sorry, we didn't find any results for that search.</p>
+            <SearchStatus status="noResults" message={'Sorry, we found no flights for that search'} />
           </div>
         )
       }

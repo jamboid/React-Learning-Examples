@@ -1,6 +1,5 @@
 import React from 'react';
 import moment from 'moment';
-import arrow from './arrow_right_grey_small.svg';
 
 import './Leg.scss';
 
@@ -46,7 +45,7 @@ class Leg extends React.Component {
       <section className='leg'>
         <figure className='leg__carrier'>
           {this.props.content.carriers.map((carrier) =>
-            <img key={carrier.code} className="itin__legLogo" src={this.createCarrierIconURL(carrier.code)} alt="Easyjet" />
+            <img key={carrier.code} className="itin__legLogo" src={this.createCarrierIconURL(carrier.code)} alt={carrier.name} />
           )}
         </figure>
         <div className='leg__location'>
@@ -57,7 +56,7 @@ class Leg extends React.Component {
         </div>
         <div className='leg__connector'>
           {/* <img src={arrow} alt="to" /> */}
-          <svg width="14" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M9.6 11.513l3.8-4c.8-.9.8-2.2 0-3.1l-3.8-4c-.6-.5-1.5-.6-2.1 0-.6.6-.7 1.5-.1 2.1l1.9 2H1.5c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5h7.8l-1.9 2c-.3.3-.4.7-.4 1 0 .4.2.8.5 1.1.6.6 1.5.5 2.1-.1z" fill="#B2AEBD" fillRule="nonzero"/></svg>
+          <svg width="14" height="12" xmlns="http://www.w3.org/2000/svg"><title>To</title><path d="M9.6 11.513l3.8-4c.8-.9.8-2.2 0-3.1l-3.8-4c-.6-.5-1.5-.6-2.1 0-.6.6-.7 1.5-.1 2.1l1.9 2H1.5c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5h7.8l-1.9 2c-.3.3-.4.7-.4 1 0 .4.2.8.5 1.1.6.6 1.5.5 2.1-.1z" fill="#B2AEBD" fillRule="nonzero"/></svg>
         </div>
         <div className='leg__location'>
           <div className='leg__locTime'>

@@ -15,6 +15,10 @@
     @include flexBase;
     align-items:center;
 
+    &--loading {
+      font-size:em(28);
+      justify-content:space-between;
+    }
   }
 
   &__place {
@@ -27,17 +31,17 @@
   }
 
   &__spinner {
-    display: inline-block;
-    line-height: 0;
-    width: 60px;
-    height: 60px;
     @include bpk-spinner(spinner-white);
-    @include bpk-spinner--xl();
+    @include bpk-spinner--lg();
   }
 
   &__details {
     font-size:em(16);
     font-weight:$normal;
     margin: 0 em(2,16);
+
+    &--loading {
+      text-align: center;
+    }
   }
 }
