@@ -56,7 +56,7 @@ class ResultsList extends React.Component {
               <Itinerary key={itinerary.id} content={itinerary}/>
             )}
 
-            <BpkPagination pageCount={this.getNumberOfPages()} selectedPageIndex={this.state.currentPage} onPageChange={this.updatePage} previousLabel="previous" nextLabel="next" visibleRange={3} pageLabel={(page, isSelected) => `page ${page}`} paginationLabel="Pagination navigation" />
+            <BpkPagination pageCount={this.getNumberOfPages()} selectedPageIndex={this.state.currentPage} onPageChange={this.updatePage} previousLabel="previous" nextLabel="next" visibleRange={1} pageLabel={(page, isSelected) => `page ${page}`} paginationLabel="Pagination navigation" />
           </div>
         )
       } else {
@@ -76,7 +76,7 @@ class ResultsList extends React.Component {
 
 ResultsList.propTypes = {
   mode: PropTypes.string.isRequired,
-  itineraries: PropTypes.array.isRequired,
+  itineraries: PropTypes.arrayOf(PropTypes.object).isRequired,
   perPage: PropTypes.number.isRequired
 }
 
