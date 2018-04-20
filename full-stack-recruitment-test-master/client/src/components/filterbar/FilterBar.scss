@@ -36,3 +36,22 @@
     }
   }
 }
+
+@include mq(plusOne($bpLeia), $limit: min) {
+  .filterBar {
+    padding:em(12);
+    position:sticky;
+    top:0;
+
+
+    &__actionsList {
+      display: block;
+    }
+
+    &__action {
+      &--last {
+        text-align: left;
+      }
+    }
+  }
+}

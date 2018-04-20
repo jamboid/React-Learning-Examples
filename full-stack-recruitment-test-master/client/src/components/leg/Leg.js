@@ -54,7 +54,7 @@ class Leg extends React.Component {
           <div className='leg__locTime'>
             {this.getFormattedTime(this.props.departure)}
           </div>
-          <abbr className='leg__locName' title={this.props.overallFromName}>{this.props.overallFromName}</abbr>
+          <abbr className='leg__locName' title={this.props.overallFromName}>{this.props.overallFromNameAbbr}</abbr>
         </div>
         <div className='leg__connector'>
           {/* <img src={arrow} alt="to" /> */}

@@ -18,7 +18,7 @@ class Itinerary extends React.Component {
             carriers={leg.carriers}
             duration={leg.duration}
             steps={leg.steps}
-
+            
           />
         )}
         <footer className='itin__action'>

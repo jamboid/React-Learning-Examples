@@ -56,16 +56,17 @@ class ResultsList extends React.Component {
         const pageToRender = this.getCurrentPageOfResults();
         return (
           <div className='resultsList'>
-            {pageToRender.map((itinerary) =>
-              <Itinerary key={itinerary.id}
-                legs={itinerary.legs}
-                price={itinerary.price}
-                agentName={itinerary.agentName}
-                bookingLink={itinerary.bookingLink} 
-              />
-            )}
-
-            <BpkPagination pageCount={this.getNumberOfPages()} selectedPageIndex={this.state.currentPage} onPageChange={this.updatePage} previousLabel="previous" nextLabel="next" visibleRange={1} pageLabel={(page, isSelected) => `page ${page}`} paginationLabel="Pagination navigation" />
+            <div className="resultsList__items">
+              {pageToRender.map((itinerary) =>
+                <Itinerary key={itinerary.id}
+                  legs={itinerary.legs}
+                  price={itinerary.price}
+                  agentName={itinerary.agentName}
+                  bookingLink={itinerary.bookingLink}
+                />
+              )}
+            </div>
+            <BpkPagination className={' resultsList__pagination'} pageCount={this.getNumberOfPages()} selectedPageIndex={this.state.currentPage} onPageChange={this.updatePage} previousLabel="previous" nextLabel="next" visibleRange={1} pageLabel={(page, isSelected) => `page ${page}`} paginationLabel="Pagination navigation" />
           </div>
         )
     } else {

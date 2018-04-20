@@ -1,6 +1,8 @@
 @import "~bpk-mixins";
 @import "../../assets/sass/base/all";
 
+
+
 .itin {
   font-family:$bodyfontfamily;
   @include bpk-card;
@@ -100,7 +102,7 @@
   }
 
   &__button {
-    @include bpk-button; 
+    @include bpk-button;
     flex:0 0 auto;
   }
 }

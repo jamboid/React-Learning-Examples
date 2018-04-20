@@ -18,7 +18,7 @@
   }
 }
 
-@supports (display:flex) {
+@supports (display:grid) {
   .searchResults {
     display:grid;
     grid-template-columns: repeat(4, 1fr);
@@ -38,6 +38,18 @@
 
     &__resultsList {
       grid-area:rs;
+    }
+  }
+
+
+  /* !== Breakpoint */
+  @include mq(plusOne($bpLeia), $limit: min) {
+    .searchResults {
+      grid-template-columns: repeat(3, 1fr) em(200) ;
+      grid-template-areas:
+      "hd hd hd hd"
+      "rs rs rs tb"
+      "rs rs rs tb";
     }
   }
 }
