@@ -23,7 +23,6 @@ class Itinerary extends React.Component {
 }
 
 Itinerary.propTypes = {
-  key: PropTypes.string.isRequired,
   content: PropTypes.object.isRequired
 }
 

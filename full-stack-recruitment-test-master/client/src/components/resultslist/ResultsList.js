@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BpkPagination from 'bpk-component-pagination';
 import Itinerary from '../itinerary';
 import SearchStatus from '../searchstatus';
@@ -24,18 +25,15 @@ class ResultsList extends React.Component {
 
   getNumberOfPages() {
     let numOfPages = Math.floor(this.props.itineraries.length / this.props.perPage);
-
     if((this.props.itineraries.length % this.props.perPage) > 1) {
       numOfPages = numOfPages++;
     }
-
     return numOfPages;
   }
 
   getCurrentPageOfResults() {
     const startIndex = 0 + (this.state.currentPage * this.props.perPage);
     const endIndex = startIndex + this.props.perPage;
-
     const currentPageOfResults = this.props.itineraries.slice(startIndex, endIndex);
     return currentPageOfResults;
   }
@@ -76,8 +74,10 @@ class ResultsList extends React.Component {
   }
 }
 
-// ResultsList.propTypes = {
-//   itineraries: React.PropTypes.array.isRequired
-// };
+ResultsList.propTypes = {
+  mode: PropTypes.string.isRequired,
+  itineraries: PropTypes.array.isRequired,
+  perPage: PropTypes.number.isRequired
+}
 
 export default ResultsList;

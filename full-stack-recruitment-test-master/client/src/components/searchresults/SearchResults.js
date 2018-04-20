@@ -12,7 +12,7 @@ class SearchResults extends React.Component {
     this.state = {
       mode: 'loading',
       header: null,
-      itineraries: null
+      itineraries: []
     };
   }
 
