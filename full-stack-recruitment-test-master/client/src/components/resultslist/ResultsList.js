@@ -62,16 +62,7 @@ class ResultsList extends React.Component {
               <Itinerary key={itinerary.id} content={itinerary}/>
             )}
 
-            <BpkPagination
-              pageCount={this.getNumberOfPages()}
-              selectedPageIndex={this.state.currentPage}
-              onPageChange={this.updatePage}
-              previousLabel="previous"
-              nextLabel="next"
-              visibleRange={3}
-              pageLabel={(page, isSelected) => `page ${page}`}
-              paginationLabel="label"
-            />
+            <BpkPagination pageCount={this.getNumberOfPages()} selectedPageIndex={this.state.currentPage} onPageChange={this.updatePage} previousLabel="previous" nextLabel="next" visibleRange={3} pageLabel={(page, isSelected) => `page ${page}`} paginationLabel="Pagination navigation" />
           </div>
         )
       } else {

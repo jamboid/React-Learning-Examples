@@ -2,7 +2,7 @@ import React from 'react';
 import ResultsHeader from '../resultsheader';
 import FilterBar from '../filterbar';
 import ResultsList from '../resultslist';
-import getQuery from '../query';
+import getQuery from '../../modules/query';
 
 import './SearchResults.scss';
 
