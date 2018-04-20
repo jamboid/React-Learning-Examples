@@ -25,14 +25,20 @@
   }
 
   &__actionLink {
-    padding:em(4,16);
+    padding:em(2,16) em(4,16);
     text-decoration: none;
     color:$bpk-color-blue-500;
     display: inline-block;
+    border-radius:3px;
+    transition:background-color 0.15s ease-in-out;
+
+    &:hover, &:focus, &:active {
+      background-color:$bpk-color-blue-100;
+    }
 
     &--priceAlert {
-      padding-left: 20px;
-      background:url(icon_price_alerts.svg) center left no-repeat;
+      padding-left: 25px;
+      background:url(icon_price_alerts.svg) 5px center  no-repeat;
     }
   }
 }
