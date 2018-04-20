@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Leg from '../leg';
 import './Itinerary.scss';
 
@@ -19,6 +20,11 @@ class Itinerary extends React.Component {
       </div>
     )
   }
+}
+
+Itinerary.propTypes = {
+  key: PropTypes.string.isRequired,
+  content: PropTypes.object.isRequired
 }
 
 export default Itinerary;

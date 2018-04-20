@@ -7,13 +7,10 @@ import './ResultsList.scss';
 class ResultsList extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       currentPage: 0
     };
-
     this.updatePage = this.updatePage.bind(this);
-
   }
 
   updatePage(pageIndex) {
@@ -22,7 +19,6 @@ class ResultsList extends React.Component {
         currentPage : pageIndex
       };
     });
-
     window.scroll(0,0);
   }
 
@@ -48,7 +44,7 @@ class ResultsList extends React.Component {
     if(this.props.mode === 'loading') {
       return (
         <div className='resultsList'>
-          <SearchStatus status="loading" message={'Gathering results'} />
+          <SearchStatus status="loading" message={"We're getting the best deals from our partners. Just a few moments longer..."} />
         </div>
       )
     } else if (this.props.mode === 'loaded') {

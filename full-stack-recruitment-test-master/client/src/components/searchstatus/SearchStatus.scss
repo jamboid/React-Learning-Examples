@@ -9,15 +9,15 @@
 
 
   &--loading {
-    background:$bpk-color-green-500;
+    background:$bpk-color-green-400;
   }
 
   &--noResults {
-    background:$bpk-color-red-500;
+    background:$bpk-color-red-400;
   }
 
   &__message {
-    font-size:em(20);
+    font-size:em(16);
     font-weight:$normal;
     margin: 0;
     text-align: center;

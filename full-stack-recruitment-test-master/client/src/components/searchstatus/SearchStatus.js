@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './SearchStatus.scss';
 
 class SearchStatus extends React.Component {
@@ -9,6 +11,11 @@ class SearchStatus extends React.Component {
       </div>
     )
   }
+}
+
+SearchStatus.propTypes = {
+  status: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired
 }
 
 export default SearchStatus;

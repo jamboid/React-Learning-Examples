@@ -8,7 +8,7 @@ const FilterBar = () => (
       <li className='filterBar__action'><a href="#" className='filterBar__actionLink'>Sort</a></li>
       <li className='filterBar__action--last filterBar__action'><a href="#" className='filterBar__actionLink--priceAlert filterBar__actionLink'>Price Alert</a></li>
     </ul>
-    </section>
+  </section>
 );
 
 export default FilterBar;
