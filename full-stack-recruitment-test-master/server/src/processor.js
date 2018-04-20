@@ -27,25 +27,6 @@ function getDataForResultsListHeader(query, places) {
   return headerJSON;
 }
 
-function getDataForItineraryFooter(currency, priceOptions, agents) {
-  const itinFooterJSON = {};
-  
-  if(currency.SymbolOnLeft) {
-    itinFooterJSON.price = currency.Symbol + priceOptions.Price;
-  }  else {
-    itinFooterJSON.price = priceOptions.Price + currency.Symbol;
-  }
-
-  itinFooterJSON.bookingLink = priceOptions.DeeplinkUrl;
-  // itinFooterJSON.agentID = priceOptions.Agents[0] || '';
-  const agentInfo = findElementInArrayByProperty(agents, 'Id', priceOptions.Agents[0]);
-  if(agentInfo) {
-    itinFooterJSON.agentName = agentInfo.Name;
-  }
-
-  return itinFooterJSON;
-}
-
 function getDataForLeg(leg, places, carriers) {
   const legJSON = {};
 
@@ -106,11 +87,23 @@ function processLivePriceResultsForClient(livePriceJSON) {
 
     // Add Itinerary ID - created by concatenating the outbound and inbound Itinerary IDs
     processedItin.id = rawItin.OutboundLegId + '-' + rawItin.InboundLegId;
+
     // Pricing Options
-    processedItin.booking = getDataForItineraryFooter(currencySymbol, rawItin.PricingOptions[0], livePriceJSON.Agents);
+    if(currencySymbol.SymbolOnLeft) {
+      processedItin.price = currencySymbol.Symbol + rawItin.PricingOptions[0].Price;
+    }  else {
+      processedItin.price = rawItin.PricingOptions[0].Price + currencySymbol.Symbol;
+    }
+
+    // General Booking Info
+    processedItin.bookingLink = rawItin.PricingOptions[0].DeeplinkUrl;
+
+    const agentInfo = findElementInArrayByProperty(livePriceJSON.Agents, 'Id', rawItin.PricingOptions[0].Agents[0]);
+    if(agentInfo) {
+      processedItin.agentName = agentInfo.Name;
+    }
 
     processedItin.legs = [];
-
     // Out-Bound Leg
     if(rawItin.OutboundLegId) {
       const outboundLegData = findElementInArrayByProperty(livePriceJSON.Legs, 'Id' , rawItin.OutboundLegId);

@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
+
 
 import './Leg.scss';
 
@@ -44,15 +46,15 @@ class Leg extends React.Component {
     return (
       <section className='leg'>
         <figure className='leg__carrier'>
-          {this.props.content.carriers.map((carrier) =>
+          {this.props.carriers.map((carrier) =>
             <img key={carrier.code} className="itin__legLogo" src={this.createCarrierIconURL(carrier.code)} alt={carrier.name} />
           )}
         </figure>
         <div className='leg__location'>
           <div className='leg__locTime'>
-            {this.getFormattedTime(this.props.content.departure)}
+            {this.getFormattedTime(this.props.departure)}
           </div>
-          <abbr className='leg__locName' title={this.props.content.overallFromName}>{this.props.content.overallFromNameAbbr}</abbr>
+          <abbr className='leg__locName' title={this.props.overallFromName}>{this.props.overallFromName}</abbr>
         </div>
         <div className='leg__connector'>
           {/* <img src={arrow} alt="to" /> */}
@@ -60,17 +62,29 @@ class Leg extends React.Component {
         </div>
         <div className='leg__location'>
           <div className='leg__locTime'>
-            {this.getFormattedTime(this.props.content.arrival)}
+            {this.getFormattedTime(this.props.arrival)}
           </div>
-          <abbr className='leg__locName' title={this.props.content.overallToName}>{this.props.content.overallToNameAbbr}</abbr>
+          <abbr className='leg__locName' title={this.props.overallToName}>{this.props.overallToNameAbbr}</abbr>
         </div>
         <div className='leg__duration'>
-          <div className='leg__time'>{this.getFormattedDuration(this.props.content.duration)}</div>
-          <div className='leg__stops'>{this.getFormattedSteps(this.props.content.steps)}</div>
+          <div className='leg__time'>{this.getFormattedDuration(this.props.duration)}</div>
+          <div className='leg__stops'>{this.getFormattedSteps(this.props.steps)}</div>
         </div>
       </section>
     )
   }
+}
+
+Leg.propTypes = {
+  overallFromName : PropTypes.string.isRequired,
+  overallFromNameAbbr : PropTypes.string.isRequired,
+  overallToName : PropTypes.string.isRequired,
+  overallToNameAbbr : PropTypes.string.isRequired,
+  departure : PropTypes.string.isRequired,
+  arrivel : PropTypes.string.isRequired,
+  carriers : PropTypes.arrayOf(PropTypes.object).isRequired,
+  duration : PropTypes.number.isRequired,
+  steps : PropTypes.number.isRequired
 }
 
 export default Leg;

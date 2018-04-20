@@ -13,6 +13,10 @@
   }
 
   &--noResults {
+    background:$bpk-color-blue-400;
+  }
+
+  &--error {
     background:$bpk-color-red-400;
   }
 

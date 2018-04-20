@@ -38,39 +38,49 @@ class ResultsList extends React.Component {
     return currentPageOfResults;
   }
 
-  render(){
+  renderResultsList() {
     if(this.props.mode === 'loading') {
       return (
         <div className='resultsList'>
           <SearchStatus status="loading" message={"We're getting the best deals from our partners. Just a few moments longer..."} />
         </div>
       )
-    } else if (this.props.mode === 'loaded') {
-      if(this.props.itineraries && this.props.itineraries.length > 0) {
 
+    } else if (this.props.mode === 'loaded' && this.props.itineraries.length === 0) {
+      return (
+        <div className='resultsList'>
+          <SearchStatus status="noResults" message={'Sorry, we found no flights for that search'} />
+        </div>
+      )
+    } else if (this.props.mode === 'loaded' && this.props.itineraries.length > 0) {
         const pageToRender = this.getCurrentPageOfResults();
-
         return (
           <div className='resultsList'>
             {pageToRender.map((itinerary) =>
-              <Itinerary key={itinerary.id} content={itinerary}/>
+              <Itinerary key={itinerary.id}
+                legs={itinerary.legs}
+                price={itinerary.price}
+                agentName={itinerary.agentName}
+                bookingLink={itinerary.bookingLink} 
+              />
             )}
 
             <BpkPagination pageCount={this.getNumberOfPages()} selectedPageIndex={this.state.currentPage} onPageChange={this.updatePage} previousLabel="previous" nextLabel="next" visibleRange={1} pageLabel={(page, isSelected) => `page ${page}`} paginationLabel="Pagination navigation" />
           </div>
         )
-      } else {
-        return (
-          <div className='resultsList'>
-            <SearchStatus status="noResults" message={'Sorry, we found no flights for that search'} />
-          </div>
-        )
-      }
     } else {
       return (
-        null
+        <div className='resultsList'>
+          <SearchStatus status="error" message={'Sorry, but something seems to have gone wrong.'} />
+        </div>
       )
     }
+  }
+
+  render(){
+    return (
+      this.renderResultsList()
+    )
   }
 }
 
