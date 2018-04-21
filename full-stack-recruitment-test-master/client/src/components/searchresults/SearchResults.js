@@ -1,5 +1,6 @@
 import React from 'react';
 import ResultsHeader from '../resultsheader';
+import LoadingHeader from '../loadingheader';
 import FilterBar from '../filterbar';
 import ResultsList from '../resultslist';
 import getQuery from '../../modules/query';
@@ -35,10 +36,34 @@ class SearchResults extends React.Component {
     .catch(console.error);
   }
 
+  getSearchHeader() {
+    if (this.state.mode === 'loading') {
+        return (
+          <header className='searchResults__header'>
+            <LoadingHeader message={'Searching...'} />
+          </header>
+        )
+    } else if (this.state.mode === 'loaded') {
+      return (
+        <header className='searchResults__header'>
+          <ResultsHeader mode={this.state.mode}
+            originName={this.state.header.originName}
+            originCode={this.state.header.originCode}
+            destinationName={this.state.header.destinationName}
+            destinationCode={this.state.header.destinationCode}
+            adults={this.state.header.adults}
+            children={this.state.header.children}
+            class={this.state.header.class}
+          />
+        </header>
+      )
+    }
+  }
+
   render () {
     return (
       <section className='searchResults'>
-        <header className='searchResults__header'><ResultsHeader mode={this.state.mode} content={this.state.header} /></header>
+        {this.getSearchHeader()}
         <main className='searchResults__resultsList'>
           <ResultsList mode={this.state.mode} itineraries={this.state.itineraries} perPage={20} />
         </main>

@@ -81,7 +81,7 @@ Leg.propTypes = {
   overallToName : PropTypes.string.isRequired,
   overallToNameAbbr : PropTypes.string.isRequired,
   departure : PropTypes.string.isRequired,
-  arrivel : PropTypes.string.isRequired,
+  arrival : PropTypes.string.isRequired,
   carriers : PropTypes.arrayOf(PropTypes.object).isRequired,
   duration : PropTypes.number.isRequired,
   steps : PropTypes.number.isRequired

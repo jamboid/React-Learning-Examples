@@ -1,0 +1,24 @@
+@import "~bpk-mixins";
+@import "../../assets/sass/base/all";
+
+.loadingHeader {
+  font-family:$bodyfontfamily;
+  background:$bpk-color-blue-500;
+  color:$clrWhite;
+  padding:em(13) em(10) em(13);
+
+  &__message {
+    font-size:em(28);
+    line-height:1;
+    font-weight:$normal;
+    margin: 0;
+    @include flexBase;
+    align-items:center;
+    justify-content:space-between;
+  }
+
+  &__spinner {
+    @include bpk-spinner(spinner-white);
+    @include bpk-spinner--lg();
+  }
+}

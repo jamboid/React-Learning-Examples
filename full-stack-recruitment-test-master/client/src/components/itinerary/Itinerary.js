@@ -14,11 +14,11 @@ class Itinerary extends React.Component {
             overallToName={leg.overallToName}
             overallToNameAbbr={leg.overallToNameAbbr}
             departure={leg.departure}
-            arrivel={leg.arrival}
+            arrival={leg.arrival}
             carriers={leg.carriers}
             duration={leg.duration}
             steps={leg.steps}
-            
+
           />
         )}
         <footer className='itin__action'>
