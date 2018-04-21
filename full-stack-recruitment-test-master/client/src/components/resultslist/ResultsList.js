@@ -42,14 +42,14 @@ class ResultsList extends React.Component {
     if(this.props.mode === 'loading') {
       return (
         <div className='resultsList'>
-          <SearchStatus status="loading" message={"We're getting the best deals from our partners. Just a few moments longer..."} />
+          <SearchStatus status="loading" message={"We're finding the best deals from our partners. Just a few moments longer..."} />
         </div>
       )
 
     } else if (this.props.mode === 'loaded' && this.props.itineraries.length === 0) {
       return (
         <div className='resultsList'>
-          <SearchStatus status="noResults" message={'Sorry, we found no flights for that search'} />
+          <SearchStatus status="noResults" message={'Sorry, we found no flights for that search. Please trying searching again.'} />
         </div>
       )
     } else if (this.props.mode === 'loaded' && this.props.itineraries.length > 0) {
@@ -72,7 +72,7 @@ class ResultsList extends React.Component {
     } else {
       return (
         <div className='resultsList'>
-          <SearchStatus status="error" message={'Sorry, but something seems to have gone wrong.'} />
+          <SearchStatus status="error" message={'Sorry, but something seems to have gone wrong. Please try searching again.'} />
         </div>
       )
     }

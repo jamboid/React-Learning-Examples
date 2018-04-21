@@ -18,7 +18,7 @@ class Leg extends React.Component {
   }
 
   getFormattedTime(time) {
-    const formattedTime = moment(time).format('hh:mm');
+    const formattedTime = moment(time).format('HH:mm');
     return formattedTime;
   }
 
